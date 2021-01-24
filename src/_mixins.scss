@@ -1,0 +1,89 @@
+///
+/// Viewport sized typography with minimum and maximum values
+///
+/// @author Eduardo Boucas (@eduardoboucas)
+///
+/// @param {Number}   $responsive  - Viewport-based size
+/// @param {Number}   $min         - Minimum font size (px)
+/// @param {Number}   $max         - Maximum font size (px)
+///                                  (optional)
+/// @param {Number}   $fallback    - Fallback for viewport-
+///                                  based units (optional)
+///
+/// @example scss - 5vw font size (with 50px fallback),
+///                 minumum of 35px and maximum of 150px
+///  @include responsive-font(5vw, 35px, 150px, 50px);
+///
+@mixin responsive-font($responsive, $min, $max: false, $fallback: false) {
+    $responsive-unitless: $responsive / ($responsive - $responsive + 1);
+    $dimension: if(unit($responsive) == "vh", "height", "width");
+    $min-breakpoint: $min / $responsive-unitless * 100;
+  
+    @media (max-#{$dimension}: #{$min-breakpoint}) {
+      font-size: $min;
+    }
+  
+    @if $max {
+      $max-breakpoint: $max / $responsive-unitless * 100;
+  
+      @media (min-#{$dimension}: #{$max-breakpoint}) {
+        font-size: $max;
+      }
+    }
+  
+    @if $fallback {
+      font-size: $fallback;
+    }
+  
+    font-size: $responsive;
+  }
+  
+  //the below will create a font that is $size 1...any font size desired.
+  //at 1080px viewport width and changes at a rate of $change 0.1 ...any rate change (0.1 = 10%)
+  @mixin respo($size, $change) {
+    font-size: calc(#{$size+"px"} + (#{$size} * #{$change} * ((100vw / 1080) - 1px)));
+  }
+  
+  @mixin respo-mat-icon($size, $change) {
+    font-size: calc(#{$size+"px"} + (#{$size} * #{$change} * ((100vw / 1080) - 1px)));
+    line-height: calc(#{$size+"px"} + (#{$size} * #{$change} * ((100vw / 1080) - 1px)));
+  }
+  
+  @mixin whRespo($size, $change) {
+    width: calc(#{$size+"px"} + (#{$size} * #{$change} * ((100vw / 1080) - 1px)));
+    height: calc(#{$size+"px"} + (#{$size} * #{$change} * ((100vw / 1080) - 1px)));
+  }
+  
+  @mixin flexit($align, $justify) {
+    @if ($align== "c") OR ($align== "center") {
+      $align: center;
+    } @else if ($align== "s") OR ($align== "start") {
+      $align: flex-start;
+    } @else if ($align== "e") OR ($align== "end") {
+      $align: flex-end;
+    }
+  
+    @if ($justify== "c") OR ($justify== "center") {
+      $justify: center;
+    } @else if ($justify== "s") OR ($justify== "start") {
+      $justify: flex-start;
+    } @else if ($justify== "e") OR ($justify== "end") {
+      $justify: flex-end;
+    }
+  
+    display: flex;
+    align-items: #{$align};
+    justify-content: #{$justify};
+  }
+  
+  @mixin prefix($property, $value, $vendors: webkit moz ms o) {
+    @if $vendors {
+      @each $vendor in $vendors {
+        #{"-" + $vendor + "-" + $property}: #{$value};
+        // @debug (#{"-" + $vendor + "-" + $property}: #{$value});
+        // @debug $vendor;
+      }
+    }
+  
+    #{$property}: #{$value};
+  }

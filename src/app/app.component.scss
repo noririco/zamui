@@ -1,0 +1,143 @@
+@import "../basis";
+@import "../mixins";
+
+:host {
+  height: 100vh;
+  width: 100vw;
+  .gridy {
+    // background-color: $c-p-1;
+    // color: $f-p;
+    opacity: 0.92;
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+    grid-template-rows: 45vh 45vh 10vh;
+    @include respo(15, 1);
+    .area {
+      display: flex;
+      z-index: 100;
+      //   @include respo(15, 1);
+
+      &.cover {
+        grid-column: 1 / span 2;
+        grid-row: 1 / span 2;
+        z-index: 0;
+        img {
+          opacity: 0.1;
+          width: 100%;
+        }
+      }
+
+      &.right-top {
+        grid-column: 1;
+        grid-row: 1;
+        display: flex;
+        overflow: hidden;
+        flex-direction: column;
+        height: 100%;
+        padding-right: 4em;
+      }
+      &.right-bot {
+        grid-column: 1;
+        grid-row: 2;
+        display: flex;
+        padding: 0 4vw;
+        @include respo(15, 1);
+        padding-right: 4em;
+      }
+
+      &.tr {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        display: flex;
+        height: 100%;
+
+        .box-polisa {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          padding: 5em 2em 0 4em;
+
+          .koteret {
+            display: flex;
+            margin-bottom: 0.8em;
+            .date {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+            .divider-vert {
+              margin: 0em 0.6em;
+              color: $c-p-2;
+              border-width: 3px;
+              border-style: solid;
+              //   -o-border-image: linear-gradient(to top, $c-p-2, $c-p-1) 1 100;
+              //   border-image: linear-gradient(to top, $c-p-2, $c-p-1) 1 100;
+              border-right: none;
+              // border-left: none;
+              border-top: none;
+              border-bottom: none;
+            }
+          }
+        }
+      }
+      &.bot {
+        grid-column: 1 / span 2;
+        grid-row: 3;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        // font-size: 1.5rem;
+        @include respo(15, 1);
+        overflow: hidden;
+        .box {
+          height: 100%;
+          width: 9000px;
+          overflow: hidden;
+          display: flex;
+          border-top: 0.05vh solid $c-p-2;
+          .banner {
+            display: flex;
+            position: relative;
+          }
+          .koteret {
+            display: flex;
+            align-items: center;
+
+            span {
+              white-space: nowrap;
+              padding: 0.3em;
+            }
+
+            .divider {
+              color: $c-p-2;
+              font-size: 2rem;
+            }
+            .divider-vert {
+              width: 100%;
+              height: 70%;
+              // border-left: 2px solid $c-p-2;
+              margin: 0em 0.3em;
+
+              color: $c-p-2;
+              /* border-bottom: 1px solid black; */
+              border-width: 3px;
+              border-style: solid;
+              -o-border-image: linear-gradient(to bottom, $c-p-2, $c-p-1) 2 64;
+              border-image: linear-gradient(to bottom, $c-p-2, $c-p-1) 1 64;
+              border-right: none;
+              // border-left: none;
+              border-top: none;
+              border-bottom: none;
+            }
+          }
+        }
+      }
+      // &.br {
+      //     grid-column: 2;
+      //     grid-row: 2;
+
+      // }
+    }
+  }
+}
