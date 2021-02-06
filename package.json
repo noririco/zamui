@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "build:prod": "ng build --prod",
     "release:zamui": "standard-version",
-    "release-dr:zamui": "standard-version -- --dry-run"
+    "release-dr:zamui": "standard-version --dry-run"
   },
   "private": true,
   "dependencies": {
