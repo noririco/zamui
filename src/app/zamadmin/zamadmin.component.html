@@ -1,0 +1,17 @@
+<div class="area cover">
+  <img src="assets/pics/bg-cover-1.jpg" alt="" />
+</div>
+<div class="area posts-editor">
+  <h2 class="title">ערוך הודעה מרכזית:</h2>
+  <textarea
+    #tArea
+    name="post"
+    id="posty"
+    cols="45"
+    rows="10"
+    [value]="(postService.lastPost$$ | async)?.msg"
+  ></textarea>
+  <button (click)="postService.post(tArea.value); router.navigate([''])">
+    עדכן הודעה
+  </button>
+</div>

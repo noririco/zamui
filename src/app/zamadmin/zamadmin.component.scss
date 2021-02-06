@@ -1,0 +1,64 @@
+@import "../../basis";
+@import "../../mixins";
+
+:host {
+  height: 100vh;
+  width: 100vw;
+  //   background: url("assets/pics/bg-cover-1.jpg");
+  display: grid;
+  grid-template-columns: 100vw;
+  grid-template-rows: 100vh;
+  align-items: center;
+  justify-content: center;
+  .area {
+    display: flex;
+
+    &.cover {
+      grid-row: 1;
+      grid-column: 1;
+      opacity: 0.1;
+      //   overflow: hidden;
+      //   img {
+      //     opacity: 0.1;
+      //     width: 90%;
+      //   }
+      background-image: url("./../../assets/pics/bg-cover-1.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    &.posts-editor {
+      z-index: 50;
+      grid-row: 1;
+      grid-column: 1;
+      justify-self: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      //   padding-right: 4em;
+      @include respo($f-size-main, 1);
+      .title {
+        align-self: flex-start;
+      }
+      #posty {
+        background: transparent;
+        width: 45ch;
+        white-space: pre-wrap;
+        color: white;
+        @include respo($f-size-main, 1);
+        font-family: "Assistant-Regular";
+      }
+      button {
+        //   display: flex;
+        margin-top: 1vh;
+        align-self: center;
+        background: transparent;
+        color: white;
+        width: 33%;
+        border: 1px solid white;
+      }
+    }
+  }
+}

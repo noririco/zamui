@@ -1,68 +1,36 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  QueryList,
-  ViewChildren,
-} from '@angular/core';
-import { interval, timer } from 'rxjs';
+import { untilDestroyed } from './utils/untilDestroyed.util';
 import { tap } from 'rxjs/operators';
-import { RSSFeedService } from './rssfeed.service';
-import { staggerList } from './shared/animations/staggerList.animation';
-import { Store } from './storez';
+import { timer, interval } from 'rxjs';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [staggerList],
 })
 export class AppComponent {
-  myText = 'צמרות סוכנות לביטוח';
-  staty = new Store({
-    initialState: {
-      //We add an offset so item1 is visible more time
-      lefty: -1000,
-      maxWidth: 7000,
-      freeText: `
-      ביטוח פנסיוני
-      אחד מסוגי הביטוח החשובים ביותר לכל עובד, שכיר או עצמאי בישראל, הוא הביטוח הפנסיוני. ביטוח פנסיה מספק ביטחון לכל עובד בישראל המחזיק בקופת הפנסיה.`,
-    },
-  });
-  lefty$$ = this.staty.selectShared('lefty');
-  maxWidth$$ = this.staty.selectShared('maxWidth');
-  freeText$$ = this.staty.selectShared('freeText');
-
-  @ViewChildren('kot') kotarot: QueryList<any>;
-
-  constructor(public rssFeed: RSSFeedService) {}
+  constructor() {}
 
   ngOnInit() {
-    interval(20)
-      .pipe(
-        // tap(console.log),
-        tap(() => {
-          if (this.staty.state.lefty > this.staty.state.maxWidth) {
-            this.staty.reset();
-          }
-          this.staty.updateState({ lefty: this.staty.state.lefty + 1 });
-        })
-      )
-      .subscribe();
+    // this.colorFeature();
   }
 
-  ngAfterViewInit() {
-    timer(200)
+  ngOnDestroy() {}
+
+  colorFeature() {
+    interval(5000)
       .pipe(
         tap(() => {
-          let sum = 0;
-          this.kotarot.forEach((koteret) => {
-            sum += koteret.nativeElement.clientWidth;
-          });
-          this.staty.updateState({
-            maxWidth: sum,
-          });
-        })
+          const body = document.getElementsByTagName('body')[0];
+          if (body.classList.contains('nighty')) {
+            body.classList.remove('nighty');
+            body.classList.add('daily');
+          } else {
+            body.classList.remove('daily');
+            body.classList.add('nighty');
+          }
+        }),
+        untilDestroyed(this)
       )
       .subscribe();
   }

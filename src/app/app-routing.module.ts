@@ -1,11 +1,25 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { ZamadminComponent } from './zamadmin/zamadmin.component';
 
-
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'zamadmin',
+    component: ZamadminComponent,
+  },
+  {
+    path: '',
+    component: WelcomeComponent,
+  },
+  {
+    path: '**',
+    redirectTo: '',
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

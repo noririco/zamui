@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   ynapi: 'http://localhost:3000/api/yn',
   poapi: 'http://localhost:3000/api/po',
+  postsapi: 'http://localhost:3000/api/posts',
 };
 
 /*

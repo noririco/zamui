@@ -16,5 +16,23 @@ body {
   font-family: "Assistant-Regular", Sans-serif;
 
   @include contrasted($c-p-1);
+
+  &.daily {
+    transition: all 1s;
+    @include contrasted($f-p);
+    .cls-5 {
+      fill: $c-p-1;
+    }
+  }
+  &.nighty {
+    transition: all 1s;
+    @include contrasted($c-p-1);
+    .cls-5 {
+      fill: $f-p;
+    }
+  }
+
+  // background-color: #1b1b34;
+  // color: #fff;
   line-height: normal;
 }

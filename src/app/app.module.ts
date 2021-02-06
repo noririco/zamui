@@ -7,9 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LogozComponent } from './logoz/logoz.component';
+import { ZamadminComponent } from './zamadmin/zamadmin.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
-  declarations: [AppComponent, LogozComponent],
+  declarations: [AppComponent, LogozComponent, ZamadminComponent, WelcomeComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

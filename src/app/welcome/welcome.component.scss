@@ -1,5 +1,5 @@
-@import "../basis";
-@import "../mixins";
+@import "../../basis";
+@import "../../mixins";
 
 :host {
   height: 100vh;
@@ -10,8 +10,8 @@
     opacity: 0.92;
     display: grid;
     grid-template-columns: 50vw 50vw;
-    grid-template-rows: 45vh 45vh 10vh;
-    @include respo(15, 1);
+    grid-template-rows: 35vh 55vh 10vh;
+    @include respo($f-size-main, 1);
     .area {
       display: flex;
       z-index: 100;
@@ -40,9 +40,15 @@
         grid-column: 1;
         grid-row: 2;
         display: flex;
-        padding: 0 4vw;
-        @include respo(15, 1);
-        padding-right: 4em;
+        // padding: 0 4vw;
+        padding-right: 3em;
+        //what you see is what you get
+
+        .box-posts {
+          width: 45ch;
+          white-space: pre-wrap;
+          @include respo($f-size-main, 1);
+        }
       }
 
       &.tr {
@@ -55,9 +61,9 @@
           flex: 1;
           display: flex;
           flex-direction: column;
-          justify-content: flex-start;
-          padding: 5em 2em 0 4em;
-          @include respo(13, 1);
+          justify-content: center;
+          padding: 2em 3em 0 3em;
+          @include respo($f-size-feed, 1);
 
           .koteret {
             display: flex;
@@ -89,7 +95,8 @@
         justify-content: center;
         display: flex;
         // font-size: 1.5rem;
-        @include respo(15, 1);
+        // @include respo(15, 1);
+        // @include respo(17, 1);
         overflow: hidden;
         .box {
           height: 100%;
@@ -104,7 +111,7 @@
           .koteret {
             display: flex;
             align-items: center;
-
+            @include respo($f-size-feed, 1);
             span {
               white-space: nowrap;
               padding: 0.3em;
