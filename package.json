@@ -1,6 +1,6 @@
 {
   "name": "zamui",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,7 +9,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build:prod": "ng build --prod",
-    "release:zamui": "standard-version"
+    "release:zamui": "standard-version",
+    "release-dr:zamui": "standard-version -- --dry-run"
   },
   "private": true,
   "dependencies": {
